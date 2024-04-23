@@ -21,6 +21,6 @@ test('testa numero BA', () => {
 })
 
 test('testa numero SEMPRE ACESSO O DOJOPUZZLES', () => {
-    const texto = numeroCel('7777_33_6_7_777_33_0_2_222_33_7777_7777_666_0_666_0_3_666_5_666_7_88_9999_9999_555_33_7777')  
+    const texto = numeroCel('77773367_7773302_222337777_777766606660366656667889999_9999555337777')  
     expect(texto).toEqual('SEMPRE ACESSO O DOJOPUZZLES')
 })

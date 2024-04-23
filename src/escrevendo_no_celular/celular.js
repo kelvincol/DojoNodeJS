@@ -22,88 +22,93 @@ Por exemplo, para digitar "SEMPRE ACESSO O DOJOPUZZLES", você precisa digitar:
 77773367_7773302_222337777_777766606660366656667889999_9999555337777 */
 
 
-const numeroCel = (tecla) => {
-   
-    const tecladoCel = {
-        '0' : ' ',
-        '2': 'A',
-        '22' : 'B',
-        '222' : 'C',
-        '3' : 'D',
-        '33' : 'E',
-        '333' : 'F',
-        '4' : 'G',
-        '44' : 'H',
-        '444' : 'I',
-        '5' : 'J',
-        '55' : 'K',
-        '555' : 'L',
-        '6' : 'M',
-        '66' : 'N',
-        '666' : 'O',
-        '7' : 'P',
-        '77' : 'Q',
-        '777' : 'R',
-        '7777' : 'S',
-        '8' : 'T',
-        '88' : 'U',
-        '888' : 'V',
-        '9' : 'W',
-        '99' : 'X',
-        '999' : 'Y',
-        '9999' : 'Z'
+const tecladoCel = {
+    '0' : ' ',
+    '2': 'A',
+    '22' : 'B',
+    '222' : 'C',
+    '3' : 'D',
+    '33' : 'E',
+    '333' : 'F',
+    '4' : 'G',
+    '44' : 'H',
+    '444' : 'I',
+    '5' : 'J',
+    '55' : 'K',
+    '555' : 'L',
+    '6' : 'M',
+    '66' : 'N',
+    '666' : 'O',
+    '7' : 'P',
+    '77' : 'Q',
+    '777' : 'R',
+    '7777' : 'S',
+    '8' : 'T',
+    '88' : 'U',
+    '888' : 'V',
+    '9' : 'W',
+    '99' : 'X',
+    '999' : 'Y',
+    '9999' : 'Z',
+    '_' : ''
 
-     
-    }
+}
+const numeroCel = (input) => {
    
-    let texto = ''
+    let resultado = ''   
+    let tempLetter
+    for(const elemento of input){
+        if (tempLetter == null) {
+            tempLetter = elemento
+            continue
+        }
+
+        if(tempLetter[0] == elemento) {
+            tempLetter += elemento
+            continue
+        }
+        
+        resultado += tecladoCel[tempLetter]
+        tempLetter = elemento
+         
+    }
+ 
+    resultado += tecladoCel[tempLetter]
+
+    return resultado
+}
+
+export {numeroCel, numeroCelKel}
+
+/*
+const contador = 0
+for(const a of mensagem) {
+    b += numeroCel[a]
+    contador++
+}
+
+
+'7777_33_6_7_777_33_0_2_222_33_7777_7777_666_0_666_0_3_666_5_666_7_88_9999_9999_555_33_7777'
+
+
+//const sequenciaNumerica = '77773367';
+//const grupos = sequenciaNumerica.match(/(\d)\1*/
+
+//console.log(grupos); // Saída: [ '7777', '33', '6', '7' ]
+
+const numeroCelKel = (tecla) => {
+   
+    let texto = ''   
 
     const repeat = tecla.split('_')
     for(const numeros of repeat){
-     texto += tecladoCel[numeros]
+        const teclas = numeros.match(/(\d)\1*/g)
+        for(const letra of teclas)
+            texto += tecladoCel[letra]
     }
  
-
-
     return texto
- 
-
 }
 
-export {numeroCel}
 
-/*const converterMensagemParaNumeros = (mensagem) => {
-    const teclas = {
-        'ABC': '2',
-        'DEF': '3',
-        'GHI': '4',
-        'JKL': '5',
-        'MNO': '6',
-        'PQRS': '7',
-        'TUV': '8',
-        'WXYZ': '9',
-        ' ': '0'
-    };
-
-    let sequenciaNumeros = '';
-    let ultimaTecla = '';
-
-    for (let i = 0; i < mensagem.length; i++) {
-        let caractere = mensagem[i];
-
-        if (caractere in teclas) {
-            if (ultimaTecla === teclas[caractere]) {
-                sequenciaNumeros += '_';
-            }
-            sequenciaNumeros += teclas[caractere].repeat(teclas[caractere] === ultimaTecla ? 4 : 1);
-            ultimaTecla = teclas[caractere];
-        }
-    }
-
-    return sequenciaNumeros;/*
-}
-
-/* Exemplo de uso:
-const mensagem = "SEMPRE ACESSO O DOJOPUZZLES";
-console.log(converterMensagemParaNumeros(mensagem));*/
 

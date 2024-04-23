@@ -23,7 +23,10 @@ Não são bissextos por exemplo:
 Escreva uma função que determina se um determinado ano informado é bissexto ou não.
  */
 
-const validaAno = (ano) => {
+
+
+const validaAno = (ano) => { 
+    
     const isDivisivelpor4 = ano % 4 == 0
     const isAnonaodiviselpor100 = ano % 100 > 0
     const isDivisivelpor400 = ano % 400 == 0
@@ -32,3 +35,4 @@ const validaAno = (ano) => {
 }
 
 export {validaAno}
+
